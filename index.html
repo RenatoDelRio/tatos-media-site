@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Photography & videography in Vancouver, BC — concerts, combat sports, and nightlife.">
+<title>Tato's Media — Photography &amp; Videography, Vancouver</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;600;800;900&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0A0A0A;
+    --paper: #EDEDE6;
+    --smoke: #9A9A93;
+    --charcoal: #16161400;
+    --charcoal-solid: #161614;
+    --hairline: #3A3A36;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Space Grotesk', sans-serif;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* grain overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+
+  h1, h2, h3, .display {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 0.92;
+  }
+
+  a { color: inherit; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(10,10,10,0.82);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--hairline);
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  nav .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .brand {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .brand img { height: 26px; width: auto; opacity: 0.95; }
+  .navlinks { display: flex; gap: 30px; font-size: 14px; }
+  .navlinks a { text-decoration: none; color: var(--smoke); transition: color 0.2s; }
+  .navlinks a:hover { color: var(--paper); }
+  .navlinks { display: none; }
+  @media (min-width: 720px) { .navlinks { display: flex; } }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    padding: 110px 0 80px;
+    border-bottom: 1px solid var(--hairline);
+    overflow: hidden;
+  }
+  .hero-logo {
+    position: absolute;
+    right: -6%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 620px;
+    max-width: 70vw;
+    opacity: 0.85;
+    filter: grayscale(1);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.5) 42%, rgba(10,10,10,0.22) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 13px;
+    color: var(--smoke);
+    letter-spacing: 0.08em;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: clamp(52px, 10vw, 128px);
+    max-width: 12ch;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-sub {
+    max-width: 46ch;
+    margin-top: 26px;
+    font-size: 17px;
+    color: #C7C7C0;
+    line-height: 1.6;
+    position: relative; z-index: 2;
+  }
+  .hero-cta {
+    margin-top: 38px;
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    position: relative; z-index: 2;
+  }
+  .btn {
+    display: inline-block;
+    padding: 14px 26px;
+    font-size: 14px;
+    text-decoration: none;
+    border: 1px solid var(--paper);
+    color: var(--paper);
+    transition: background 0.2s, color 0.2s;
+    letter-spacing: 0.03em;
+  }
+  .btn:hover { background: var(--paper); color: var(--ink); }
+  .btn.ghost { border-color: var(--hairline); color: var(--smoke); }
+  .btn.ghost:hover { border-color: var(--paper); background: transparent; color: var(--paper); }
+
+  /* SECTION SHARED */
+  section { padding: 90px 0; border-bottom: 1px solid var(--hairline); }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+  }
+  .section-head h2 { font-size: clamp(34px, 5vw, 56px); }
+  .section-head p { color: var(--smoke); max-width: 34ch; font-size: 14.5px; line-height: 1.6; }
+
+  /* WORK GRID */
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--hairline);
+    border: 1px solid var(--hairline);
+  }
+  .work-tile {
+    background: var(--ink);
+    aspect-ratio: 4/5;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 22px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .work-tile::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(135deg, #1c1c19 0 2px, #0a0a0a 2px 14px);
+    opacity: 0.55;
+    z-index: -1;
+    transition: transform 0.6s ease;
+  }
+  .work-tile:hover::before { transform: scale(1.08); }
+  .work-tile .tag {
+    font-size: 11px;
+    color: var(--smoke);
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+  .work-tile h3 { font-size: 26px; }
+  .work-tile .add {
+    position: absolute; top: 18px; right: 18px;
+    font-size: 12px; color: var(--hairline);
+    border: 1px solid var(--hairline);
+    padding: 5px 10px;
+  }
+
+  /* GALLERY TILE (has real photos) */
+  .work-tile.has-photos { padding: 0; cursor: pointer; }
+  .work-tile.has-photos::before { display: none; }
+  .collage {
+    position: absolute; inset: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 2px;
+  }
+  .collage img {
+    width: 100%; height: 100%; object-fit: cover;
+    
+    display: block;
+    transition: transform 0.6s ease, filter 0.3s ease;
+  }
+  .work-tile.has-photos:hover .collage img { transform: scale(1.05); }
+  .tile-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(10,10,10,0) 40%, rgba(10,10,10,0.85) 100%);
+    display: flex; align-items: flex-end;
+    padding: 22px;
+    z-index: 2;
+  }
+  .tile-overlay .tag { font-size: 11px; color: var(--smoke); letter-spacing: 0.06em; margin-bottom: 6px; }
+  .tile-overlay h3 { font-size: 26px; color: var(--paper); }
+  .tile-overlay .count { font-size: 12px; color: var(--smoke); margin-top: 4px; }
+
+  /* LIGHTBOX */
+  .lightbox {
+    position: fixed; inset: 0;
+    background: rgba(6,6,5,0.96);
+    z-index: 500;
+    display: none;
+    align-items: center; justify-content: center;
+    padding: env(safe-area-inset-top,0px) 16px env(safe-area-inset-bottom,0px);
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 92vw; max-height: 84vh;
+    
+    box-shadow: 0 0 60px rgba(0,0,0,0.6);
+  }
+  .lightbox-close, .lightbox-prev, .lightbox-next {
+    position: absolute;
+    background: none; border: 1px solid var(--hairline);
+    color: var(--paper);
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color 0.2s;
+  }
+  .lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover { border-color: var(--paper); }
+  .lightbox-close { top: calc(18px + env(safe-area-inset-top,0px)); right: 18px; }
+  .lightbox-prev { left: 18px; top: 50%; transform: translateY(-50%); }
+  .lightbox-next { right: 18px; top: 50%; transform: translateY(-50%); }
+  .lightbox-count {
+    position: absolute; bottom: calc(20px + env(safe-area-inset-bottom,0px)); left: 50%; transform: translateX(-50%);
+    font-size: 12px; color: var(--smoke);
+  }
+  @media (max-width: 640px) {
+    .lightbox-prev, .lightbox-next { width: 38px; height: 38px; font-size: 16px; }
+  }
+
+  /* VIDEOS */
+  .video-carousel { display: flex; align-items: center; gap: 14px; }
+  .video-track {
+    display: flex; gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    flex: 1; min-width: 0;
+    padding: 4px 0 12px;
+  }
+  .video-track::-webkit-scrollbar { display: none; }
+  .video-slide {
+    flex: 0 0 auto;
+    width: min(300px, 72vw);
+    aspect-ratio: 9/16;
+    scroll-snap-align: start;
+    position: relative;
+    overflow: hidden;
+    background: var(--ink);
+    border: 1px solid var(--hairline);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .video-slide video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .video-slide.add-slide {
+    background: repeating-linear-gradient(135deg, #1c1c19 0 2px, #0a0a0a 2px 14px);
+  }
+  .video-slide .add {
+    font-size: 12px; color: var(--smoke);
+    border: 1px solid var(--hairline);
+    padding: 6px 12px;
+  }
+  .carousel-btn {
+    flex: 0 0 auto;
+    background: none; border: 1px solid var(--hairline);
+    color: var(--paper); cursor: pointer;
+    width: 44px; height: 44px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color 0.2s;
+  }
+  .carousel-btn:hover { border-color: var(--paper); }
+  @media (max-width: 560px) {
+    .carousel-btn { width: 38px; height: 38px; font-size: 16px; }
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  @media (min-width: 800px) { .about-grid { grid-template-columns: 1.1fr 0.9fr; gap: 70px; } }
+  .about-text p { font-size: 17px; line-height: 1.75; color: #D6D6D0; max-width: 56ch; }
+  .about-text p + p { margin-top: 18px; }
+  .stat-list { border-top: 1px solid var(--hairline); }
+  .stat-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 18px 0; border-bottom: 1px solid var(--hairline);
+  }
+  .stat-row .num { font-family: 'Big Shoulders Display'; font-weight: 800; font-size: 30px; }
+  .stat-row .label { color: var(--smoke); font-size: 13px; max-width: 20ch; text-align: right; }
+
+  /* PRICING */
+  .price-table { border-top: 1px solid var(--hairline); }
+  .price-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr auto;
+    gap: 20px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--hairline);
+    align-items: baseline;
+  }
+  .price-row .name { font-family: 'Big Shoulders Display'; font-weight: 700; font-size: 20px; letter-spacing: 0.01em; }
+  .price-row .desc { color: var(--smoke); font-size: 14px; line-height: 1.5; }
+  .price-row .price { font-size: 18px; text-align: right; white-space: nowrap; }
+  .price-row.head { color: var(--smoke); font-size: 12px; letter-spacing: 0.05em; }
+  @media (max-width: 640px) {
+    .price-row { grid-template-columns: 1fr; gap: 6px; }
+    .price-row .price { text-align: left; }
+  }
+  .price-note { color: var(--smoke); font-size: 13px; margin-top: 24px; max-width: 50ch; line-height: 1.6; }
+
+  /* CONTACT */
+  .contact { text-align: left; }
+  .contact h2 { font-size: clamp(40px, 8vw, 90px); max-width: 14ch; }
+  .contact-links { margin-top: 40px; display: flex; flex-direction: column; gap: 14px; font-size: 20px; }
+  .contact-links a { text-decoration: none; border-bottom: 1px solid var(--hairline); padding-bottom: 4px; width: fit-content; transition: border-color 0.2s, opacity 0.2s; }
+  .contact-links a:hover { border-color: var(--paper); }
+
+  footer {
+    padding: 30px 0 calc(30px + env(safe-area-inset-bottom, 0px));
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: var(--hairline); flex-wrap: wrap; gap: 10px;
+  }
+
+  ::selection { background: var(--paper); color: var(--ink); }
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <img src="assets/img/logo.png" alt="mark">
+      Tato's Media
+    </a>
+    <div class="navlinks">
+      <a href="#work">Work</a>
+      <a href="#videos">Videos</a>
+      <a href="#about">About</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-scrim"></div>
+  <img class="hero-logo" src="assets/img/logo.png" alt="">
+  <div class="wrap">
+    <div class="hero-eyebrow">Photography &amp; Videography — Vancouver, BC</div>
+    <h1>Vancouver<br>in motion.</h1>
+    <p class="hero-sub">Concerts, combat sports, live events, and the nightlife brands that run this city after dark. Fast in the room, honest in the edit, built for content that actually gets used.</p>
+    <div class="hero-cta">
+      <a class="btn" href="#work">See the work</a>
+      <a class="btn ghost" href="#contact">Book a shoot</a>
+    </div>
+  </div>
+</header>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Selected<br>work</h2>
+      <p>Three lanes, one eye. Replace each tile with your own gallery once you've got the sets ready.</p>
+    </div>
+    <div class="work-grid">
+      <div class="work-tile has-photos" id="concerts-tile" onclick="openLightbox('concerts', 0)">
+        <div class="collage" id="concerts-collage"></div>
+        <div class="tile-overlay">
+          <div>
+            <div class="tag">01 — Live</div>
+            <h3>Concerts</h3>
+            <div class="count">12 photos — click to view</div>
+          </div>
+        </div>
+      </div>
+      <div class="work-tile has-photos" id="combat-tile" onclick="openLightbox('combat', 0)">
+        <div class="collage" id="combat-collage"></div>
+        <div class="tile-overlay">
+          <div>
+            <div class="tag">02 — Action</div>
+            <h3>Combat &amp; Sport</h3>
+            <div class="count">10 photos — click to view</div>
+          </div>
+        </div>
+      </div>
+      <div class="work-tile"><span class="add">+ add photos</span><div><div class="tag">03 — After Dark</div><h3>Nightlife</h3></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="videos">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>On<br>reel.</h2>
+      <p>Motion cuts from the same shoots above. Scroll through, or drop your own reel into each slide.</p>
+    </div>
+    <div class="video-carousel">
+      <button class="carousel-btn prev" onclick="scrollCarousel(-1)" aria-label="Previous video">‹</button>
+      <div class="video-track" id="video-track">
+        <div class="video-slide">
+          <video controls preload="metadata" poster="assets/img/video-posters/like-a-woman.jpg" playsinline>
+            <source src="assets/video/like-a-woman.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-slide">
+          <video controls preload="metadata" poster="assets/img/video-posters/local-bjj-promotional.jpg" playsinline>
+            <source src="assets/video/local-bjj-promotional.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-slide">
+          <video controls preload="metadata" poster="assets/img/video-posters/omar-episode-1.jpg" playsinline>
+            <source src="assets/video/omar-episode-1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-slide">
+          <video controls preload="metadata" poster="assets/img/video-posters/kudo-1.jpg" playsinline>
+            <source src="assets/video/kudo-1.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <button class="carousel-btn next" onclick="scrollCarousel(1)" aria-label="Next video">›</button>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-text">
+      <h2 style="font-size:clamp(30px,4.5vw,44px); margin-bottom: 22px;">Built in the room,<br>not the studio.</h2>
+      <p>I work fast, in bad light, in packed rooms — reading a crowd, anticipating the moment before it happens, and delivering something worth posting before the night's even over.</p>
+      <p>That instinct covers gyms, brands, and the promoters keeping Vancouver's nightlife alive. Same eye, different rooms. The work below says the rest.</p>
+    </div>
+    <div class="stat-list">
+      <div class="stat-row"><span class="num">Concerts</span><span class="label">Where it started</span></div>
+      <div class="stat-row"><span class="num">Combat Sports</span><span class="label">Gyms &amp; academies</span></div>
+      <div class="stat-row"><span class="num">Nightlife</span><span class="label">Promoters &amp; brands</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Pricing</h2>
+      <p>Simple, on purpose. Full breakdown available on request.</p>
+    </div>
+    <div class="price-table">
+      <div class="price-row">
+        <div class="name">Quick Session</div>
+        <div class="desc">1 hour, 1 location — 20–25 edited photos</div>
+        <div class="price">$200</div>
+      </div>
+      <div class="price-row">
+        <div class="name">Standard Session</div>
+        <div class="desc">2–3 hours — 40–50 edited photos + 1 short video clip</div>
+        <div class="price">$450</div>
+      </div>
+      <div class="price-row">
+        <div class="name">Full Day</div>
+        <div class="desc">8 hours — 150+ edited photos + 2 short video clips, full usage rights</div>
+        <div class="price">$1,300</div>
+      </div>
+      <div class="price-row">
+        <div class="name">Monthly Retainer</div>
+        <div class="desc">Ongoing content partnership — from 1 shoot/month to weekly coverage</div>
+        <div class="price">From $450/mo</div>
+      </div>
+    </div>
+    <p class="price-note">These are introductory Vancouver rates for gyms, venues, and brands. Ask for the full pricing catalog for exact retainer tiers.</p>
+  </div>
+</section>
+
+<section id="contact" style="border-bottom:none;">
+  <div class="wrap contact">
+    <h2>Let's shoot<br>something.</h2>
+    <div class="contact-links">
+      <a href="mailto:renatodelriolecaros@gmail.com">renatodelriolecaros@gmail.com</a>
+      <a href="https://instagram.com/tatos.media" target="_blank" rel="noopener">@tatos.media on Instagram</a>
+      <a href="tel:+16723380630">+1 (672) 338-0630</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;">
+    <span>© Tato's Media — Vancouver, BC</span>
+    <span>Photography &amp; Videography</span>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button class="lightbox-prev" onclick="navLightbox(-1)">‹</button>
+  <img id="lightbox-img" src="" alt="">
+  <button class="lightbox-next" onclick="navLightbox(1)">›</button>
+  <div class="lightbox-count" id="lightbox-count"></div>
+</div>
+
+<script>
+  const CONCERT_PHOTOS = ["assets/img/concerts/01.jpg", "assets/img/concerts/02.jpg", "assets/img/concerts/03.jpg", "assets/img/concerts/04.jpg", "assets/img/concerts/05.jpg", "assets/img/concerts/06.jpg", "assets/img/concerts/07.jpg", "assets/img/concerts/08.jpg", "assets/img/concerts/09.jpg", "assets/img/concerts/10.jpg", "assets/img/concerts/11.jpg", "assets/img/concerts/12.jpg"];
+  const COMBAT_PHOTOS = ["assets/img/combat/01.jpg", "assets/img/combat/02.jpg", "assets/img/combat/03.jpg", "assets/img/combat/04.jpg", "assets/img/combat/05.jpg", "assets/img/combat/06.jpg", "assets/img/combat/07.jpg", "assets/img/combat/08.jpg", "assets/img/combat/09.jpg", "assets/img/combat/10.jpg"];
+  const GALLERIES = {
+    concerts: { photos: CONCERT_PHOTOS, collageId: 'concerts-collage', label: 'Concert photo' },
+    combat: { photos: COMBAT_PHOTOS, collageId: 'combat-collage', label: 'Combat & Sport photo' }
+  };
+  let lbGallery = 'concerts';
+  let lbIndex = 0;
+
+  function renderCollage(key) {
+    const g = GALLERIES[key];
+    const collage = document.getElementById(g.collageId);
+    const preview = g.photos.slice(0, 4);
+    collage.innerHTML = preview.map(src => `<img src="${src}" alt="${g.label}" loading="lazy">`).join('');
+  }
+
+  function openLightbox(key, i) {
+    lbGallery = key;
+    lbIndex = i;
+    updateLightbox();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function navLightbox(delta) {
+    const photos = GALLERIES[lbGallery].photos;
+    lbIndex = (lbIndex + delta + photos.length) % photos.length;
+    updateLightbox();
+  }
+  function updateLightbox() {
+    const photos = GALLERIES[lbGallery].photos;
+    document.getElementById('lightbox-img').src = photos[lbIndex];
+    document.getElementById('lightbox-count').textContent = (lbIndex + 1) + ' / ' + photos.length;
+  }
+  document.addEventListener('keydown', (e) => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navLightbox(-1);
+    if (e.key === 'ArrowRight') navLightbox(1);
+  });
+  document.getElementById('lightbox').addEventListener('click', (e) => {
+    if (e.target.id === 'lightbox') closeLightbox();
+  });
+
+  function scrollCarousel(dir) {
+    const track = document.getElementById('video-track');
+    const slide = track.querySelector('.video-slide');
+    const amount = slide ? slide.getBoundingClientRect().width + 16 : 300;
+    track.scrollBy({ left: dir * amount, behavior: 'smooth' });
+  }
+
+  renderCollage('concerts');
+  renderCollage('combat');
+</script>
+</body>
+</html>
