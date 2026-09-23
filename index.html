@@ -372,7 +372,7 @@
 <nav>
   <div class="wrap">
     <a class="brand" href="#top">
-      <img src="img/logo.png" alt="mark">
+      <img src="assets/img/logo.png" alt="mark">
       Tato's Media
     </a>
     <div class="navlinks">
@@ -387,7 +387,7 @@
 
 <header class="hero" id="top">
   <div class="hero-scrim"></div>
-  <img class="hero-logo" src="img/logo.png" alt="">
+  <img class="hero-logo" src="assets/img/logo.png" alt="">
   <div class="wrap">
     <div class="hero-eyebrow">Photography &amp; Videography — Vancouver, BC</div>
     <h1>Vancouver<br>in motion.</h1>
@@ -403,6 +403,7 @@
   <div class="wrap">
     <div class="section-head">
       <h2>Selected<br>work</h2>
+      <p>Three lanes, one eye. Click into any tile for the full set.</p>
     </div>
     <div class="work-grid">
       <div class="work-tile has-photos" id="concerts-tile" onclick="openLightbox('concerts', 0)">
@@ -425,7 +426,16 @@
           </div>
         </div>
       </div>
-      <div class="work-tile"><span class="add">+ add photos</span><div><div class="tag">03 — After Dark</div><h3>Nightlife</h3></div></div>
+      <div class="work-tile has-photos" id="nightlife-tile" onclick="openLightbox('nightlife', 0)">
+        <div class="collage" id="nightlife-collage"></div>
+        <div class="tile-overlay">
+          <div>
+            <div class="tag">03 — After Dark</div>
+            <h3>Nightlife</h3>
+            <div class="count">8 photos — click to view</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -434,28 +444,29 @@
   <div class="wrap">
     <div class="section-head">
       <h2>On<br>reel.</h2>
+      <p>Motion cuts from the same shoots above. Scroll through, or drop your own reel into each slide.</p>
     </div>
     <div class="video-carousel">
       <button class="carousel-btn prev" onclick="scrollCarousel(-1)" aria-label="Previous video">‹</button>
       <div class="video-track" id="video-track">
         <div class="video-slide">
-          <video controls preload="metadata" poster="img/video-posters/like-a-woman.jpg" playsinline>
-            <source src="like-a-woman.mp4" type="video/mp4">
+          <video controls preload="metadata" poster="assets/img/video-posters/like-a-woman.jpg" playsinline>
+            <source src="assets/video/like-a-woman.mp4" type="video/mp4">
           </video>
         </div>
         <div class="video-slide">
-          <video controls preload="metadata" poster="img/video-posters/local-bjj-promotional.jpg" playsinline>
-            <source src="local-bjj-promotional.mp4" type="video/mp4">
+          <video controls preload="metadata" poster="assets/img/video-posters/local-bjj-promotional.jpg" playsinline>
+            <source src="assets/video/local-bjj-promotional.mp4" type="video/mp4">
           </video>
         </div>
         <div class="video-slide">
-          <video controls preload="metadata" poster="img/video-posters/omar-episode-1.jpg" playsinline>
-            <source src="omar-episode-1.mp4" type="video/mp4">
+          <video controls preload="metadata" poster="assets/img/video-posters/omar-episode-1.jpg" playsinline>
+            <source src="assets/video/omar-episode-1.mp4" type="video/mp4">
           </video>
         </div>
         <div class="video-slide">
-          <video controls preload="metadata" poster="img/video-posters/kudo-1.jpg" playsinline>
-            <source src="kudo-1.mp4" type="video/mp4">
+          <video controls preload="metadata" poster="assets/img/video-posters/kudo-1.jpg" playsinline>
+            <source src="assets/video/kudo-1.mp4" type="video/mp4">
           </video>
         </div>
       </div>
@@ -507,6 +518,7 @@
         <div class="price">From $450/mo</div>
       </div>
     </div>
+    <p class="price-note">These are introductory Vancouver rates for gyms, venues, and brands. Ask for the full pricing catalog for exact retainer tiers.</p>
   </div>
 </section>
 
@@ -537,11 +549,13 @@
 </div>
 
 <script>
-  const CONCERT_PHOTOS = ["img/concerts/01.jpg", "img/concerts/02.jpg", "img/concerts/03.jpg", "img/concerts/04.jpg", "img/concerts/05.jpg", "img/concerts/06.jpg", "img/concerts/07.jpg", "img/concerts/08.jpg", "img/concerts/09.jpg", "img/concerts/10.jpg", "img/concerts/11.jpg", "img/concerts/12.jpg"];
-  const COMBAT_PHOTOS = ["img/combat/01.jpg", "img/combat/02.jpg", "img/combat/03.jpg", "img/combat/04.jpg", "img/combat/05.jpg", "img/combat/06.jpg", "img/combat/07.jpg", "img/combat/08.jpg", "img/combat/09.jpg", "img/combat/10.jpg"];
+  const CONCERT_PHOTOS = ["assets/img/concerts/01.jpg", "assets/img/concerts/02.jpg", "assets/img/concerts/03.jpg", "assets/img/concerts/04.jpg", "assets/img/concerts/05.jpg", "assets/img/concerts/06.jpg", "assets/img/concerts/07.jpg", "assets/img/concerts/08.jpg", "assets/img/concerts/09.jpg", "assets/img/concerts/10.jpg", "assets/img/concerts/11.jpg", "assets/img/concerts/12.jpg"];
+  const COMBAT_PHOTOS = ["assets/img/combat/01.jpg", "assets/img/combat/02.jpg", "assets/img/combat/03.jpg", "assets/img/combat/04.jpg", "assets/img/combat/05.jpg", "assets/img/combat/06.jpg", "assets/img/combat/07.jpg", "assets/img/combat/08.jpg", "assets/img/combat/09.jpg", "assets/img/combat/10.jpg"];
+  const NIGHTLIFE_PHOTOS = ["assets/img/nightlife/01.jpg", "assets/img/nightlife/02.jpg", "assets/img/nightlife/03.jpg", "assets/img/nightlife/04.jpg", "assets/img/nightlife/05.jpg", "assets/img/nightlife/06.jpg", "assets/img/nightlife/07.jpg", "assets/img/nightlife/08.jpg"];
   const GALLERIES = {
     concerts: { photos: CONCERT_PHOTOS, collageId: 'concerts-collage', label: 'Concert photo' },
-    combat: { photos: COMBAT_PHOTOS, collageId: 'combat-collage', label: 'Combat & Sport photo' }
+    combat: { photos: COMBAT_PHOTOS, collageId: 'combat-collage', label: 'Combat & Sport photo' },
+    nightlife: { photos: NIGHTLIFE_PHOTOS, collageId: 'nightlife-collage', label: 'Nightlife photo' }
   };
   let lbGallery = 'concerts';
   let lbIndex = 0;
@@ -593,6 +607,7 @@
 
   renderCollage('concerts');
   renderCollage('combat');
+  renderCollage('nightlife');
 </script>
 </body>
 </html>
